@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MediCare Clinic</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style >
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#f4f9ff;
+}
+
+/* NAVBAR */
+
+nav{
+background:#0a3d62;
+padding:15px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+color:white;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav ul li{
+margin-left:25px;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+font-weight:500;
+}
+
+/* HOME */
+
+#home{
+height:100vh;
+background: url("https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=1600") center/cover no-repeat;
+/*background:
+linear-gradient(rgba(10,61,98,0.6),rgba(10,61,98,0.6)),
+url("image.jpg") center/cover no-repeat; */
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+#home h1{
+font-size:42px;
+margin-bottom:20px;
+}
+
+.form-box{
+background:white;
+padding:30px;
+border-radius:10px;
+width:350px;
+color:black;
+box-shadow:0 5px 20px rgba(0,0,0,0.3);
+}
+
+input,textarea{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+button{
+width:100%;
+padding:10px;
+background:#0a3d62;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#145da0;
+}
+
+/* SERVICES */
+
+#services{
+padding:80px 20px;
+text-align:center;
+background:white;
+}
+
+#services h2{
+color:#0a3d62;
+margin-bottom:30px;
+}
+
+.services-box{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:20px;
+}
+
+.service-card{
+background:#f0f8ff;
+padding:20px;
+width:220px;
+border-radius:8px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+cursor:pointer;
+transition:0.3s;
+}
+
+.service-card:hover{
+transform:translateY(-5px);
+background:#d6ecff;
+}
+
+/* SERVICE INFO BOX */
+
+.service-info{
+margin-top:40px;
+padding:20px;
+background:#eaf4ff;
+border-radius:8px;
+width:60%;
+margin-left:auto;
+margin-right:auto;
+display:none;
+}
+
+/* CONTACT */
+
+#contact{
+padding:80px 20px;
+text-align:center;
+background:#eaf4ff;
+}
+
+#contact h2{
+color:#0a3d62;
+margin-bottom:20px;
+}
+
+footer{
+background:#0a3d62;
+color:white;
+text-align:center;
+padding:15px;
+}
+
+#contact p{
+font-size:18px;
+margin:15px 0;
+color:#333;
+}
+
+
+</style>
+
+<script>
+function showService(text){
+document.getElementById("serviceDetails").innerHTML = text;
+document.getElementById("serviceDetails").style.display = "block";
+}
+</script>
+
+</head>
+
+<body>
+
+<nav>
+<h2>MediCare</h2>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+<!-- HOME -->
+
+<section id="home">
+<h1>Welcome to MediCare Clinic</h1>
+
+<div class="form-box">
+<h3>Book Appointment</h3>
+<form action="submit.php" method="POST">
+<input type="text" name="name" placeholder="Enter Name" required>
+<input type="number" name="age" placeholder="Enter Age" required>
+<textarea name="problem" placeholder="Describe your problem" required></textarea>
+<button type="submit">Submit</button>
+</form>
+</div>
+</section>
+
+<!-- SERVICES -->
+
+<section id="services">
+<h2>Our Services</h2>
+
+<div class="services-box">
+
+<div class="service-card" onclick="showService('Routine health examination and complete diagnosis facilities available.')">
+<h4>General Checkup</h4>
+<p>Routine health examination</p>
+</div>
+
+<div class="service-card" onclick="showService('Special pediatric care for infants and children with expert doctors.')">
+<h4>Child Care</h4>
+<p>Special pediatric care</p>
+</div>
+
+<div class="service-card" onclick="showService('Advanced dental treatments including cleaning, braces and surgery.')">
+<h4>Dental Care</h4>
+<p>Advanced dental treatments</p>
+</div>
+
+<div class="service-card" onclick="showService('24/7 emergency medical assistance with ambulance support.')">
+<h4>Emergency</h4>
+<p>24/7 emergency services</p>
+</div>
+
+</div>
+
+<div id="serviceDetails" class="service-info"></div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+<h2>Contact Us</h2>
+
+<p><i class="fa-solid fa-envelope"></i>  medicare@gmail.com</p>
+
+<p><i class="fa-solid fa-phone"></i>  +91 9876543210</p>
+
+<p><i class="fa-solid fa-location-dot"></i>  Pune, Maharashtra</p>
+
+</section>
+
+<footer>
+© 2026 MediCare Clinic | All Rights Reserved
+</footer>
+
+</body>
+</html>
