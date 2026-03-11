@@ -381,19 +381,6 @@ Recovery time = 10:06 AM
 RTO = 6 minutes
 ________________________________________
 
----
-# 🧪 Failover Testing
-
-To verify the disaster recovery setup, the following tests were performed:
-
-1. Simulated failure of the primary region
-2. Verified database replication status
-3. Promoted the read replica in the disaster recovery region
-4. Updated application configuration
-5. Confirmed application functionality
-
----
-
 # 📁 Repository Structure
 
 ```
@@ -469,7 +456,7 @@ During the development of this project, the following key concepts and practical
 
 Detailed project documentation is available in above pdf.
 
-[View Project Documentation](documentation/project-report.pdf)
+[View Project Documentation](documentation/project_report.pdf)
 
 
 ---
