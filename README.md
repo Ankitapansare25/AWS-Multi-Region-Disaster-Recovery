@@ -225,7 +225,7 @@ Create another EC2 instance in the DR region.
 
 Region: Singapore
 
-Configuration: Name: dr-database-1
+Configuration: Name: Medicare_App_1
 
 Instance Type: t2.micro
 
@@ -269,8 +269,11 @@ Go to: S3 → Create Bucket
 Primary Bucket: Region: Mumbai
 
 Example uploaded files:
+
 patient-report.pdf
+
 user-profile.jpg
+
 dr-test-file.txt
 
 ![s3_bucket](screenshots/primary_s3.png)
