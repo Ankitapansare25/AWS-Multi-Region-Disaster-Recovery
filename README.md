@@ -57,11 +57,11 @@ Architecture Diagram
 
 # 🖥 Application Demo
 
-Application Home Page
+**Application Home Page**
 
 ![Application Home](screenshots/primary_app.png)
 
-Data Successfully Inserted
+**Data Successfully Inserted**
 
 ![Success Message](screenshots/primary_data_insert.png)
 
@@ -89,7 +89,7 @@ Go to: EC2 → Instances → Launch Instance
 
 Configuration:
 
-Name: Primary-App-Server
+Name: Medicare_App
 
 Region: Mumbai
 
@@ -102,9 +102,14 @@ Port 22 – SSH
 Port 80 – HTTP
 
 Launch the instance.
+
+
+![Primary_ec2](screenshots/primary_ec2.png)
+
 ________________________________________
 # STEP 3 – Install Web Server on EC2
 Connect to EC2 using SSH and install Nginx and PHP.
+
 Commands:
 ```
 sudo yum update -y
@@ -171,6 +176,9 @@ Instance Type: db.t3.micro
 Region: Mumbai
 
 Create the database instance.
+
+![Primary_ec2](screenshots/primary_rds.png)
+
 ________________________________________
 # STEP 8 – Connect to RDS Database
 
@@ -187,13 +195,15 @@ USE medicare;
 CREATE TABLE appointments(
 id INT PRIMARY KEY AUTO_INCREMENT,
 name VARCHAR(50),
-age VARCHAR(4), Problem VARCHAR(50),
+age VARCHAR(4), Problem VARCHAR(50)
 );
 
 Check data:
 ```
 SELECT * FROM appointments;
 ```
+
+![Primary_ec2](screenshots/mysql-cli-1.png)
 ________________________________________
 # STEP 9 – Create RDS Read Replica
 
@@ -220,6 +230,8 @@ Configuration: Name: dr-database-1
 Instance Type: t2.micro
 
 This server acts as a backup application server.
+
+![secondary_ec2](screenshots/secondary_ec2.png)
 ________________________________________
 
 # STEP 11 – Configure Security Group for DR Database
@@ -246,7 +258,7 @@ This allows the DR application server to access the database securely.
 
 Screenshot:
 
-![Secondary RDS Security Group](screenshots/secondary_rds_sg.png)
+![Secondary RDS Security Group](screenshots/Screenshot 2026-03-07 162120.png)
 
 ________________________________________
 
@@ -260,6 +272,8 @@ Example uploaded files:
 patient-report.pdf
 user-profile.jpg
 dr-test-file.txt
+
+![s3_bucket](screenshots/primary_s3.png)
 ________________________________________
 # STEP 13 – Create IAM Role for Replication
 
@@ -276,6 +290,8 @@ Attach Policy: AmazonS3FullAccess
 Role Name: 
 
 Purpose: The IAM role allows S3 to read data from the primary bucket and replicate it to the destination bucket.
+
+![s3_bucket](screenshots/IAM_role.png)
 ________________________________________
 # STEP 14 – Configure S3 Cross-Region Replication
 
@@ -456,7 +472,7 @@ During the development of this project, the following key concepts and practical
 
 Detailed project documentation is available in above pdf.
 
-[View Project Documentation](./documentation/project_report.pdf))
+[View Project Documentation](./documentation/project_report.pdf)
 
 
 ---
