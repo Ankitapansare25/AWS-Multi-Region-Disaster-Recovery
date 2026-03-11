@@ -280,7 +280,7 @@ Use Case: S3
 
 Attach Policy: AmazonS3FullAccess
 
-Role Name: s3-replication-role
+Role Name: 
 
 Purpose: The IAM role allows S3 to read data from the primary bucket and replicate it to the destination bucket.
 ________________________________________
@@ -292,14 +292,18 @@ Primary Bucket: Mumbai
 
 Replica Bucket: Singapore
 
-Steps: S3 → Primary Bucket → Management → Replication Rules → Create Rule
+Steps: S3  →  Primary Bucket  →  Management  →  Replication Rules  →  Create Rule
 
 Replication Flow:
 
 Primary Bucket (Mumbai)
+
 ↓
+
 Automatic Replication
+
 ↓
+
 Replica Bucket (Singapore)
 
 Whenever a file is uploaded to the primary bucket, it is automatically copied to the replica bucket.
@@ -318,11 +322,17 @@ Failover testing ensures that the system continues working even if the primary r
 
 **Failover Flow:**
 Primary Database Failure
+
 ↓
+
 Promote Read Replica
+
 ↓
+
 Replica becomes Primary Database
+
 ↓
+
 Application connects to DR Region
 ________________________________________
 # STEP 15 – Architecture Flow
@@ -344,11 +354,13 @@ index.html Form
 submit.php
 
 ↓
+
 RDS Primary Database
 
 ↓
 
 RDS Read Replica (Singapore)
+
 
 **S3 Data Flow:**
 
