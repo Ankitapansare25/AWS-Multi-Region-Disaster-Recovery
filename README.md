@@ -221,7 +221,36 @@ Instance Type: t2.micro
 
 This server acts as a backup application server.
 ________________________________________
-# STEP 11 – Create S3 Bucket
+
+# STEP 11 – Configure Security Group for DR Database
+
+To allow the Disaster Recovery EC2 instance to connect to the database, the MySQL port must be allowed in the RDS security group.
+
+**Steps:**
+
+Go to:
+
+EC2 → Security Groups
+
+Select the **RDS security group** used by the Read Replica database.
+
+Edit **Inbound Rules**.
+
+Add the following rule:
+
+Type: MySQL / Aurora  
+Port: 3306  
+Source: Security Group ID of the Secondary EC2 instance
+
+This allows the DR application server to access the database securely.
+
+Screenshot:
+
+![Secondary RDS Security Group](screenshots/secondary_rds_sg.png)
+
+________________________________________
+
+# STEP 12 – Create S3 Bucket
 
 Go to: S3 → Create Bucket
 
@@ -232,7 +261,7 @@ patient-report.pdf
 user-profile.jpg
 dr-test-file.txt
 ________________________________________
-# STEP 12 – Create IAM Role for Replication
+# STEP 13 – Create IAM Role for Replication
 
 Replication requires permissions.
 
@@ -248,7 +277,7 @@ Role Name:
 
 Purpose: The IAM role allows S3 to read data from the primary bucket and replicate it to the destination bucket.
 ________________________________________
-# STEP 13 – Configure S3 Cross-Region Replication
+# STEP 14 – Configure S3 Cross-Region Replication
 
 Enable replication between buckets.
 
@@ -272,7 +301,7 @@ Replica Bucket (Singapore)
 
 Whenever a file is uploaded to the primary bucket, it is automatically copied to the replica bucket.
 ________________________________________
-# STEP 14 – Failover Testing
+# STEP 15 – Failover Testing
 
 Failover testing ensures that the system continues working even if the primary region fails.
 
@@ -299,7 +328,7 @@ Replica becomes Primary Database
 
 Application connects to DR Region
 ________________________________________
-# STEP 15 – Architecture Flow
+# STEP 16 – Architecture Flow
 
 **Application Flow:**
 
@@ -338,7 +367,7 @@ Cross-Region Replication
 
 S3 Replica Bucket (Singapore)
 ________________________________________
-# STEP 16 – Recovery Objectives
+# STEP 17 – Recovery Objectives
 
 Final RTO Calculation
 
@@ -351,10 +380,6 @@ Recovery time = 10:06 AM
 
 RTO = 6 minutes
 ________________________________________
-
-
-
-
 
 # 🧪 Failover Testing
 
