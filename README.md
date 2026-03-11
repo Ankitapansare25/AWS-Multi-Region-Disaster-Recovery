@@ -104,42 +104,6 @@ Port 80 – HTTP
 Launch the instance.
 ________________________________________
 # STEP 3 – Install Web Server on EC2
-
-Connect to EC2 using SSH and install Nginx and PHP.
-
-Commands:
-STEP 1 – Login to AWS Console
-
-Login to the AWS Management Console.
-
-Select the Primary Region for deployment.
-
-Primary Region: Mumbai (ap-south-1)
-All main resources such as EC2, RDS and S3 are first created in this region.
-
-Screenshot:
-AWS Region Selection
-________________________________________
-# STEP 2 – Launch EC2 Instance (Primary Region)
-
-Go to: EC2 → Instances → Launch Instance
-
-Configuration:
-Name: Primary-App-Server
-
-Region: Mumbai
-
-Instance type: t2.micro
-
-Security Group Rules:
-
-Port 22 – SSH
-
-Port 80 – HTTP
-
-Launch the instance.
-________________________________________
-# STEP 3 – Install Web Server on EC2
 Connect to EC2 using SSH and install Nginx and PHP.
 Commands:
 ```
@@ -174,7 +138,7 @@ These files are stored in the EC2 web directory.
 
 Command:
 ```
-cd /var/www/html
+cd /usr/share/nginx/html
 ```
 ________________________________________
 # STEP 5 – Create index.html File
@@ -212,7 +176,7 @@ ________________________________________
 
 Connect to the database from EC2.
 
-Command: ``` mysql -h <RDS-ENDPOINT>  -u  <admin>  -p ```
+Command: ``` mysql -h <RDS-ENDPOINT>  -u  <db_username>  -p ```
 
 Create database and table.
 
@@ -235,7 +199,7 @@ ________________________________________
 
 To enable disaster recovery, create a Read Replica of the primary database.
 
-Steps: RDS → Select Database
+**Steps:** RDS → Select Database
 
 Actions → Create Read Replica
 
