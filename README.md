@@ -468,7 +468,8 @@ During the development of this project, the following key concepts and practical
 
 Detailed project documentation is available in above pdf.
 
-documentation/project-report.pdf
+[View Project Documentation](documentation/project-report.pdf)
+
 
 ---
 
